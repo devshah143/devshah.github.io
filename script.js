@@ -579,3 +579,588 @@ if (heroVisual && window.innerWidth > 768) {
     });
 
 }
+
+/* =====================================================
+   GRAPHIC DESIGN GALLERY
+===================================================== */
+
+
+/*
+    Each category contains its own images.
+
+    Add/remove images here as required.
+*/
+
+const galleries = {
+
+    "social-media": {
+
+        title: "Social Media",
+
+        images: [
+
+            "assets/galleries/social-media/01.jpg",
+
+            "assets/galleries/social-media/02.jpg",
+
+            "assets/galleries/social-media/03.jpg",
+
+            "assets/galleries/social-media/04.jpg",
+
+            "assets/galleries/social-media/05.jpg",
+
+            "assets/galleries/social-media/06.jpg",
+
+            "assets/galleries/social-media/07.jpg",
+
+            "assets/galleries/social-media/08.jpg",
+
+            "assets/galleries/social-media/09.jpg",
+
+            "assets/galleries/social-media/10.jpg",
+
+            "assets/galleries/social-media/11.jpg",
+
+            "assets/galleries/social-media/12.jpg"
+
+        ]
+
+    },
+
+
+    "menu": {
+
+        title: "Menu Design",
+
+        images: [
+
+            "assets/galleries/menu/01.jpg",
+
+            "assets/galleries/menu/02.jpg",
+
+            "assets/galleries/menu/03.jpg"
+
+        ]
+
+    },
+
+
+    "pole-banners": {
+
+        title: "Pole Banners",
+
+        images: [
+
+            "assets/galleries/pole-banners/01.jpg",
+
+            "assets/galleries/pole-banners/02.jpg",
+
+            "assets/galleries/pole-banners/03.jpg"
+
+        ]
+
+    },
+
+
+    "visiting-cards": {
+
+        title: "Visiting Cards",
+
+        images: [
+
+            "assets/galleries/visiting-cards/01.jpg",
+
+            "assets/galleries/visiting-cards/02.jpg",
+
+            "assets/galleries/visiting-cards/03.jpg"
+
+        ]
+
+    },
+
+
+    "newspaper": {
+
+        title: "Newspaper Insert",
+
+        images: [
+
+            "assets/galleries/newspaper/01.jpg",
+
+            "assets/galleries/newspaper/02.jpg"
+
+        ]
+
+    },
+
+
+    "handbook": {
+
+        title: "Handbook Design",
+
+        images: [
+
+            "assets/galleries/handbook/01.jpg",
+
+            "assets/galleries/handbook/02.jpg",
+
+            "assets/galleries/handbook/03.jpg"
+
+        ]
+
+    },
+
+
+    "catalogue": {
+
+        title: "Catalogue Design",
+
+        images: [
+
+            "assets/galleries/catalogue/01.jpg",
+
+            "assets/galleries/catalogue/02.jpg",
+
+            "assets/galleries/catalogue/03.jpg"
+
+        ]
+
+    },
+
+
+    "letterhead": {
+
+        title: "Letterhead",
+
+        images: [
+
+            "assets/galleries/letterhead/01.jpg",
+
+            "assets/galleries/letterhead/02.jpg"
+
+        ]
+
+    },
+
+
+    "site-branding": {
+
+        title: "Site Branding",
+
+        images: [
+
+            "assets/galleries/site-branding/01.jpg",
+
+            "assets/galleries/site-branding/02.jpg",
+
+            "assets/galleries/site-branding/03.jpg"
+
+        ]
+
+    },
+
+
+    "brochure": {
+
+        title: "Brochure Design",
+
+        images: [
+
+            "assets/galleries/brochure/01.jpg",
+
+            "assets/galleries/brochure/02.jpg",
+
+            "assets/galleries/brochure/03.jpg"
+
+        ]
+
+    }
+
+};
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const galleryModal =
+    document.getElementById("galleryModal");
+
+const galleryTitle =
+    document.getElementById("galleryTitle");
+
+const galleryMainImage =
+    document.getElementById("galleryMainImage");
+
+const galleryThumbnails =
+    document.getElementById("galleryThumbnails");
+
+const galleryCurrent =
+    document.getElementById("galleryCurrent");
+
+const galleryTotal =
+    document.getElementById("galleryTotal");
+
+const galleryClose =
+    document.getElementById("galleryClose");
+
+const galleryPrev =
+    document.getElementById("galleryPrev");
+
+const galleryNext =
+    document.getElementById("galleryNext");
+
+
+let currentGallery = null;
+
+let currentIndex = 0;
+
+
+
+/* =====================================================
+   OPEN GALLERY
+===================================================== */
+
+document
+    .querySelectorAll(".graphic-card")
+    .forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                const galleryName =
+                    card.dataset.gallery;
+
+                openGallery(galleryName);
+
+            }
+
+        );
+
+    });
+
+
+
+function openGallery(name) {
+
+    const gallery =
+        galleries[name];
+
+    if (!gallery) return;
+
+
+    currentGallery = gallery;
+
+    currentIndex = 0;
+
+
+    galleryTitle.textContent =
+        gallery.title;
+
+
+    galleryTotal.textContent =
+        String(gallery.images.length)
+        .padStart(2, "0");
+
+
+    createThumbnails();
+
+
+    galleryModal.style.visibility =
+        "visible";
+
+    galleryModal.style.pointerEvents =
+        "auto";
+
+
+    gsap.to(galleryModal, {
+
+        opacity: 1,
+
+        duration: .5,
+
+        ease: "power2.out"
+
+    });
+
+
+    gsap.fromTo(
+        ".gallery-container",
+        {
+            y: 60,
+            opacity: 0
+        },
+        {
+            y: 0,
+            opacity: 1,
+            duration: .7,
+            ease: "power4.out"
+        }
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    showImage(0);
+
+}
+
+
+
+/* =====================================================
+   CLOSE
+===================================================== */
+
+function closeGallery() {
+
+    gsap.to(galleryModal, {
+
+        opacity: 0,
+
+        duration: .4,
+
+        ease: "power2.in",
+
+        onComplete: () => {
+
+            galleryModal.style.visibility =
+                "hidden";
+
+            galleryModal.style.pointerEvents =
+                "none";
+
+        }
+
+    });
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+galleryClose.addEventListener(
+    "click",
+    closeGallery
+);
+
+
+document
+    .querySelector(".gallery-overlay")
+    .addEventListener(
+        "click",
+        closeGallery
+    );
+
+
+
+/* =====================================================
+   SHOW IMAGE
+===================================================== */
+
+function showImage(index) {
+
+    if (!currentGallery)
+        return;
+
+
+    const images =
+        currentGallery.images;
+
+
+    if (index < 0)
+        index = images.length - 1;
+
+
+    if (index >= images.length)
+        index = 0;
+
+
+    currentIndex = index;
+
+
+    galleryMainImage.style.opacity =
+        "0";
+
+
+    galleryMainImage.src =
+        images[currentIndex];
+
+
+    galleryMainImage.onload =
+        () => {
+
+            gsap.fromTo(
+                galleryMainImage,
+                {
+                    opacity: 0,
+                    scale: .94,
+                    y: 20
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    duration: .6,
+                    ease: "power3.out"
+                }
+            );
+
+        };
+
+
+    galleryCurrent.textContent =
+        String(currentIndex + 1)
+        .padStart(2, "0");
+
+
+    updateThumbnails();
+
+}
+
+
+
+/* =====================================================
+   NEXT / PREVIOUS
+===================================================== */
+
+galleryNext.addEventListener(
+    "click",
+    () => {
+
+        showImage(
+            currentIndex + 1
+        );
+
+    }
+);
+
+
+galleryPrev.addEventListener(
+    "click",
+    () => {
+
+        showImage(
+            currentIndex - 1
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   THUMBNAILS
+===================================================== */
+
+function createThumbnails() {
+
+    galleryThumbnails.innerHTML =
+        "";
+
+
+    currentGallery.images
+        .forEach((image, index) => {
+
+            const thumb =
+                document.createElement("div");
+
+
+            thumb.className =
+                "gallery-thumb";
+
+
+            thumb.innerHTML = `
+
+                <img
+                    src="${image}"
+                    alt=""
+                >
+
+            `;
+
+
+            thumb.addEventListener(
+                "click",
+                () => {
+
+                    showImage(index);
+
+                }
+            );
+
+
+            galleryThumbnails.appendChild(
+                thumb
+            );
+
+        });
+
+}
+
+
+
+function updateThumbnails() {
+
+    document
+        .querySelectorAll(".gallery-thumb")
+        .forEach(
+            (thumb, index) => {
+
+                thumb.classList.toggle(
+                    "active",
+                    index === currentIndex
+                );
+
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   KEYBOARD CONTROLS
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if (
+            galleryModal.style.visibility
+            !== "visible"
+        ) return;
+
+
+        if (e.key === "Escape") {
+
+            closeGallery();
+
+        }
+
+
+        if (e.key === "ArrowRight") {
+
+            showImage(
+                currentIndex + 1
+            );
+
+        }
+
+
+        if (e.key === "ArrowLeft") {
+
+            showImage(
+                currentIndex - 1
+            );
+
+        }
+
+    }
+);
