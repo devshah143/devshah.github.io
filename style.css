@@ -559,7 +559,219 @@ img {
 
 /* =====================================================
    SECTIONS
+===================================================== */    
+
+
+/* =====================================================
+   GRAPHIC DESIGN SECTION
 ===================================================== */
+
+.graphic-design {
+
+    border-top: 1px solid var(--border);
+
+}
+
+
+/* GRID */
+
+.graphic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px 30px;
+}
+
+
+/* CARD */
+
+.graphic-card {
+    cursor: pointer;
+    width: 100%;
+}
+
+
+/* IMAGE */
+
+.graphic-image {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+
+
+/* IMAGE */
+
+.graphic-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    transition:
+        transform 1s cubic-bezier(.2,.7,.2,1),
+        filter .7s ease;
+}
+
+
+/* NUMBER */
+
+.graphic-number {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    font-family: "Space Grotesk";
+
+    font-size: 12px;
+
+    color: white;
+
+    z-index: 3;
+}
+
+/* VIEW CIRCLE */
+
+.graphic-view {
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--accent);
+
+    color: #000;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transform:
+        scale(0)
+        rotate(-20deg);
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+
+
+/* HOVER */
+
+.graphic-card:hover .graphic-image img {
+    transform: scale(1.08);
+
+    filter: brightness(.65);
+}
+
+
+.graphic-card:hover .graphic-view {
+    transform:
+        scale(1)
+        rotate(0deg);
+}
+
+
+
+/* INFO */
+
+.graphic-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: baseline;
+
+    padding-top: 18px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.graphic-info h3 {
+
+    font-family: "Space Grotesk";
+
+    font-size: 25px;
+
+    font-weight: 500;
+
+    margin: 0;
+}
+
+
+.graphic-info span {
+
+    font-size: 10px;
+
+    color: #666;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 768px) {
+
+    .graphic-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px 0;
+
+    }
+
+
+    .graphic-image {
+
+        aspect-ratio: 4 / 3;
+
+    }
+
+
+    .graphic-info {
+
+        display: block;
+
+    }
+
+
+    .graphic-info span {
+
+        display: block;
+
+        margin-top: 7px;
+
+    }
+
+}
 
 .section {
 
@@ -670,7 +882,7 @@ img {
 
     height: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
 
     transition:
 
@@ -1746,6 +1958,696 @@ footer {
     .hero-content {
 
         z-index: 5;
+
+    }
+
+}
+
+/* =====================================================
+   GALLERY MODAL
+===================================================== */
+
+.gallery-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 8000;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* DARK BACKGROUND */
+
+.gallery-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(5,5,5,.96);
+
+    backdrop-filter:
+        blur(25px);
+
+}
+
+
+/* CONTAINER */
+
+.gallery-container {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 35px 5vw;
+
+    display: flex;
+
+    flex-direction: column;
+
+    z-index: 2;
+
+}
+
+
+/* =====================================================
+   TOP
+===================================================== */
+
+.gallery-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+}
+
+
+.gallery-label {
+
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.gallery-top h2 {
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size:
+        clamp(35px, 5vw, 70px);
+
+    line-height: .9;
+
+    letter-spacing: -3px;
+
+    margin-top: 15px;
+
+}
+
+
+/* CLOSE */
+
+.gallery-close {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 1px solid #444;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 32px;
+
+    font-weight: 200;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.gallery-close:hover {
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    color: black;
+
+    transform: rotate(90deg);
+
+}
+
+
+/* =====================================================
+   MAIN IMAGE
+===================================================== */
+
+.gallery-main {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 30px;
+
+}
+
+
+.gallery-image-wrapper {
+
+    width: min(75vw, 1100px);
+
+    height: min(65vh, 700px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+
+.gallery-image-wrapper img {
+
+    max-width: 100%;
+
+    max-height: 100%;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    opacity: 0;
+
+    transform:
+        scale(.94)
+        translateY(20px);
+
+}
+
+
+/* =====================================================
+   ARROWS
+===================================================== */
+
+.gallery-arrow {
+
+    width: 55px;
+
+    height: 55px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid #333;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.gallery-arrow:hover {
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    color: black;
+
+    transform: scale(1.1);
+
+}
+
+
+/* =====================================================
+   COUNTER
+===================================================== */
+
+.gallery-counter {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size: 11px;
+
+    color: #777;
+
+}
+
+
+#galleryCurrent {
+
+    color: var(--accent);
+
+}
+
+
+.counter-line {
+
+    width: 80px;
+
+    height: 1px;
+
+    background: #333;
+
+}
+
+
+/* =====================================================
+   THUMBNAILS
+===================================================== */
+
+.gallery-thumbnails {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    overflow-x: auto;
+
+    padding-bottom: 5px;
+
+}
+
+
+.gallery-thumb {
+
+    width: 70px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #292929;
+
+    opacity: .45;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: .3s;
+
+}
+
+
+.gallery-thumb img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+
+.gallery-thumb:hover {
+
+    opacity: 1;
+
+}
+
+
+.gallery-thumb.active {
+
+    opacity: 1;
+
+    border-color: var(--accent);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 768px) {
+
+    .gallery-container {
+
+        padding: 25px 5vw;
+
+    }
+
+
+    .gallery-main {
+
+        gap: 10px;
+
+    }
+
+
+    .gallery-image-wrapper {
+
+        width: 75vw;
+
+        height: 55vh;
+
+    }
+
+
+    .gallery-arrow {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 15px;
+
+    }
+
+
+    .gallery-close {
+
+        width: 45px;
+
+        height: 45px;
+
+    }
+
+
+    .gallery-thumb {
+
+        width: 55px;
+
+        height: 42px;
+
+    }
+
+}
+
+/* =====================================================
+   SELECTED WORK — EQUAL SIZE PROJECTS
+===================================================== */
+
+.projects {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 70px 30px;
+
+}
+
+
+/* REMOVE WIDE PROJECT BEHAVIOUR */
+
+.project-wide {
+
+    grid-column: auto !important;
+
+}
+
+
+/* EVERY PROJECT */
+
+.project {
+
+    width: 100%;
+
+    min-width: 0;
+
+}
+
+
+/* EVERY PROJECT IMAGE */
+
+.project-visual {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #111;
+
+}
+
+
+/* EVERY IMAGE */
+
+.project-visual img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.7,.2,1),
+
+        filter .7s ease;
+
+}
+
+
+/* HOVER */
+
+.project:hover
+.project-visual img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* =====================================================
+   PROJECT HOVER
+===================================================== */
+
+.project-hover {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(0,0,0,.45);
+
+    opacity: 0;
+
+    transition:
+        opacity .5s ease;
+
+}
+
+
+.project-hover div {
+
+    width: 110px;
+
+    height: 110px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: var(--accent);
+
+    color: #000;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transform:
+        scale(.5)
+        rotate(-20deg);
+
+    transition:
+        transform .5s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.project:hover
+.project-hover {
+
+    opacity: 1;
+
+}
+
+
+.project:hover
+.project-hover div {
+
+    transform:
+        scale(1)
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   PROJECT META
+===================================================== */
+
+.project-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    padding-top: 18px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.project-meta h3 {
+
+    margin: 7px 0 6px;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 500;
+
+}
+
+
+.project-meta p {
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+.project-meta > div > span {
+
+    font-size: 10px;
+
+    color: var(--accent);
+
+    letter-spacing: 1px;
+
+}
+
+
+.project-arrow {
+
+    font-size: 25px;
+
+    transition:
+        transform .4s ease;
+
+}
+
+
+.project:hover
+.project-arrow {
+
+    transform:
+        translate(5px,-5px);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .projects {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+    }
+
+
+    .project-visual {
+
+        aspect-ratio: 4 / 3;
+
+    }
+
+
+    .project-meta h3 {
+
+        font-size: 22px;
 
     }
 
