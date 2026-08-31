@@ -46,6 +46,7 @@ const loader = setInterval(() => {
 }, 80);
 
 
+
 /* =====================================================
    LENIS SMOOTH SCROLL
 ===================================================== */
@@ -56,6 +57,23 @@ const lenis = new Lenis({
 });
 
 
+/* Allow native scrolling inside modal */
+
+const caseContainer =
+    document.querySelector(".case-container");
+
+if (caseContainer) {
+
+    caseContainer.setAttribute(
+        "data-lenis-prevent",
+        ""
+    );
+
+}
+
+
+/* LENIS RAF */
+
 function raf(time) {
 
     lenis.raf(time);
@@ -65,6 +83,8 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+
 
 
 /* =====================================================
@@ -1159,6 +1179,716 @@ document.addEventListener(
             showImage(
                 currentIndex - 1
             );
+
+        }
+
+    }
+);
+
+// /* =====================================================
+//    CASE STUDY POPUP
+// ===================================================== */
+
+// const caseStudies = {
+
+//     footspot: {
+
+//         title: "FootSpot",
+
+//         project: "FootSpot",
+
+//         type: "UI/UX Design",
+
+//         year: "2025",
+
+//         image:
+//             "assets/case-studies/footspot.jpg",
+
+//         link: "#"
+
+//     },
+
+
+//     fuelbuddy: {
+
+//         title: "Fuel Buddy",
+
+//         project: "Fuel Buddy",
+
+//         type: "UI/UX Design",
+
+//         year: "2025",
+
+//         image:
+//             "assets/case-studies/fuelbuddy.jpg",
+
+//         link: "#"
+
+//     },
+
+
+//     amul: {
+
+//         title: "Amul",
+
+//         project: "Amul",
+
+//         type: "Website Design",
+
+//         year: "2025",
+
+//         image:
+//             "assets/case-studies/amul.jpg",
+
+//         link: "#"
+
+//     },
+
+
+//     cashmonk: {
+
+//         title: "Cashmonk",
+
+//         project: "Cashmonk",
+
+//         type: "UI/UX Design",
+
+//         year: "2024",
+
+//         image:
+//             "assets/case-studies/cashmonk.jpg",
+
+//         link: "#"
+
+//     },
+
+
+//     quotes: {
+
+//         title: "11000 Quotes",
+
+//         project: "11000 Quotes",
+
+//         type: "Mobile App",
+
+//         year: "2024",
+
+//         image:
+//             "assets/case-studies/quotes.jpg",
+
+//         link: "#"
+
+//     }
+
+// };
+
+
+
+// /* ELEMENTS */
+
+// const caseModal =
+//     document.getElementById("caseModal");
+
+// const caseTitle =
+//     document.getElementById("caseTitle");
+
+// const caseImage =
+//     document.getElementById("caseImage");
+
+// const caseProject =
+//     document.getElementById("caseProject");
+
+// const caseType =
+//     document.getElementById("caseType");
+
+// const caseYear =
+//     document.getElementById("caseYear");
+
+// const caseLink =
+//     document.getElementById("caseLink");
+
+// const caseClose =
+//     document.getElementById("caseClose");
+
+
+
+// /* OPEN */
+
+// document
+//     .querySelectorAll(".work-card")
+//     .forEach(card => {
+
+//         card.addEventListener(
+//             "click",
+//             () => {
+
+//                 const id =
+//                     card.dataset.caseStudy;
+
+//                 openCaseStudy(id);
+
+//             }
+//         );
+
+//     });
+
+
+
+// function openCaseStudy(id) {
+
+//     const project =
+//         caseStudies[id];
+
+//     if (!project) return;
+
+
+//     caseTitle.textContent =
+//         project.title;
+
+//     caseProject.textContent =
+//         project.project;
+
+//     caseType.textContent =
+//         project.type;
+
+//     caseYear.textContent =
+//         project.year;
+
+//     caseImage.src =
+//         project.image;
+
+//     caseLink.href =
+//         project.link;
+
+
+//     caseModal.style.visibility =
+//         "visible";
+
+//     caseModal.style.pointerEvents =
+//         "auto";
+
+
+//     document.body.style.overflow =
+//         "hidden";
+
+
+//     gsap.to(caseModal, {
+
+//         opacity: 1,
+
+//         duration: .5,
+
+//         ease: "power2.out"
+
+//     });
+
+
+//     gsap.fromTo(
+//         ".case-container",
+//         {
+//             y: 70,
+//             opacity: 0
+//         },
+//         {
+//             y: 0,
+//             opacity: 1,
+//             duration: .7,
+//             ease: "power4.out"
+//         }
+//     );
+
+
+//     caseImage.onload = () => {
+
+//         gsap.fromTo(
+//             caseImage,
+//             {
+//                 opacity: 0,
+//                 scale: .9,
+//                 y: 30
+//             },
+//             {
+//                 opacity: 1,
+//                 scale: 1,
+//                 y: 0,
+//                 duration: .8,
+//                 ease: "power3.out"
+//             }
+//         );
+
+//     };
+
+// }
+
+
+
+// /* CLOSE */
+
+// function closeCaseStudy() {
+
+//     gsap.to(caseModal, {
+
+//         opacity: 0,
+
+//         duration: .4,
+
+//         ease: "power2.in",
+
+//         onComplete: () => {
+
+//             caseModal.style.visibility =
+//                 "hidden";
+
+//             caseModal.style.pointerEvents =
+//                 "none";
+
+//         }
+
+//     });
+
+
+//     document.body.style.overflow =
+//         "";
+
+// }
+
+
+// caseClose.addEventListener(
+//     "click",
+//     closeCaseStudy
+// );
+
+
+// document
+//     .querySelector(".case-overlay")
+//     .addEventListener(
+//         "click",
+//         closeCaseStudy
+//     );
+
+
+
+// /* ESC */
+
+// document.addEventListener(
+//     "keydown",
+//     e => {
+
+//         if (
+//             e.key === "Escape" &&
+//             caseModal.style.visibility === "visible"
+//         ) {
+
+//             closeCaseStudy();
+
+//         }
+
+//     }
+// );
+
+/* =====================================================
+   CASE STUDY POPUP
+===================================================== */
+
+
+/* -----------------------------------------------------
+   CASE STUDY DATA
+----------------------------------------------------- */
+
+const caseStudies = {
+
+    footspot: {
+
+        title: "FootSpot",
+
+        project: "FootSpot",
+
+        type: "E-Commerce App · UI/UX Design",
+
+        year: "2025",
+
+        image:
+            "assets/case-studies/footspot/footspot.png",
+
+        link: "#"
+
+    },
+
+
+    fuelbuddy: {
+
+        title: "Fuel Buddy",
+
+        project: "Fuel Buddy",
+
+        type: "E-Commerce App · UI/UX Design",
+
+        year: "2025",
+
+        image:
+            "assets/case-studies/fuelbuddy/fuelbuddy.png",
+
+        link: "#"
+
+    },
+
+
+    amul: {
+
+        title: "Amul Website Redesign",
+
+        project: "Amul Website Redesign",
+
+        type: "B2B / B2C · Website Redesign",
+
+        year: "2025",
+
+        image:
+            "assets/case-studies/amul/amul.png",
+
+        link: "#"
+
+    },
+
+
+    cashmonk: {
+
+        title: "Cashmonk",
+
+        project: "Cashmonk",
+
+        type: "App Redesign · UI/UX",
+
+        year: "2025",
+
+        image:
+            "assets/case-studies/cashmonk/case-study.jpg",
+
+        link: "#"
+
+    },
+
+
+    quotes: {
+
+        title: "11000 Quotes App",
+
+        project: "11000 Quotes App",
+
+        type: "App Redesign · UI/UX",
+
+        year: "2025",
+
+        image:
+            "assets/case-studies/quotes/case-study.jpg",
+
+        link: "#"
+
+    }
+
+};
+
+
+
+/* -----------------------------------------------------
+   ELEMENTS
+----------------------------------------------------- */
+
+const caseModal =
+    document.getElementById("caseModal");
+
+const caseTitle =
+    document.getElementById("caseTitle");
+
+const caseImage =
+    document.getElementById("caseImage");
+
+const caseProject =
+    document.getElementById("caseProject");
+
+const caseType =
+    document.getElementById("caseType");
+
+const caseYear =
+    document.getElementById("caseYear");
+
+const caseLink =
+    document.getElementById("caseLink");
+
+const caseClose =
+    document.getElementById("caseClose");
+
+const caseOverlay =
+    document.querySelector(".case-overlay");
+
+
+
+/* -----------------------------------------------------
+   PROJECT CLICK
+----------------------------------------------------- */
+
+document
+    .querySelectorAll(".project[data-case-study]")
+    .forEach(project => {
+
+        project.addEventListener(
+            "click",
+            () => {
+
+                const name =
+                    project.dataset.caseStudy;
+
+                openCaseStudy(name);
+
+            }
+
+        );
+
+    });
+
+
+
+/* -----------------------------------------------------
+   OPEN CASE STUDY
+----------------------------------------------------- */
+
+function openCaseStudy(name) {
+
+    const data =
+        caseStudies[name];
+
+    if (!data) {
+
+        console.warn(
+            "Case study not found:",
+            name
+        );
+
+        return;
+
+    }
+
+
+    /* CONTENT */
+
+    caseTitle.textContent =
+        data.title;
+
+    caseProject.textContent =
+        data.project;
+
+    caseType.textContent =
+        data.type;
+
+    caseYear.textContent =
+        data.year;
+
+
+    /* IMAGE */
+
+    caseImage.src =
+        data.image;
+
+    caseImage.alt =
+        data.title;
+
+
+    /* LINK */
+
+    caseLink.href =
+        data.link;
+
+
+    /* SHOW */
+
+    caseModal.style.visibility =
+        "visible";
+
+    caseModal.style.pointerEvents =
+        "auto";
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    /* RESET */
+
+    gsap.set(
+        ".case-container",
+        {
+            y: 70,
+            opacity: 0
+        }
+    );
+
+
+    gsap.set(
+        caseImage,
+        {
+            opacity: 0,
+            y: 40,
+            scale: .97
+        }
+    );
+
+
+    /* MODAL FADE */
+
+    gsap.to(
+        caseModal,
+        {
+
+            opacity: 1,
+
+            duration: .45,
+
+            ease: "power2.out"
+
+        }
+    );
+
+
+    /* CONTAINER */
+
+    gsap.to(
+        ".case-container",
+        {
+
+            y: 0,
+
+            opacity: 1,
+
+            duration: .7,
+
+            ease: "power4.out"
+
+        }
+    );
+
+
+    /* IMAGE */
+
+    caseImage.onload =
+        () => {
+
+            gsap.to(
+                caseImage,
+                {
+
+                    opacity: 1,
+
+                    y: 0,
+
+                    scale: 1,
+
+                    duration: .8,
+
+                    delay: .15,
+
+                    ease: "power4.out"
+
+                }
+            );
+
+        };
+
+}
+
+
+
+/* -----------------------------------------------------
+   CLOSE CASE STUDY
+----------------------------------------------------- */
+
+function closeCaseStudy() {
+
+    gsap.to(
+        ".case-container",
+        {
+
+            y: 50,
+
+            opacity: 0,
+
+            duration: .4,
+
+            ease: "power2.in"
+
+        }
+    );
+
+
+    gsap.to(
+        caseModal,
+        {
+
+            opacity: 0,
+
+            duration: .45,
+
+            delay: .1,
+
+            ease: "power2.in",
+
+            onComplete: () => {
+
+                caseModal.style.visibility =
+                    "hidden";
+
+                caseModal.style.pointerEvents =
+                    "none";
+
+                document.body.style.overflow =
+                    "";
+
+                caseImage.src = "";
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* -----------------------------------------------------
+   CLOSE BUTTON
+----------------------------------------------------- */
+
+caseClose.addEventListener(
+    "click",
+    closeCaseStudy
+);
+
+
+
+/* -----------------------------------------------------
+   BACKGROUND CLICK
+----------------------------------------------------- */
+
+caseOverlay.addEventListener(
+    "click",
+    closeCaseStudy
+);
+
+
+
+/* -----------------------------------------------------
+   ESC KEY
+----------------------------------------------------- */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            caseModal.style.visibility === "visible"
+        ) {
+
+            closeCaseStudy();
 
         }
 
