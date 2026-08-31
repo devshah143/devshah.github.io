@@ -152,26 +152,29 @@ cursorAnimation();
 
 function startHero() {
 
+    const isMobile = window.innerWidth <= 768;
+
     const timeline = gsap.timeline();
 
     timeline
 
-    
-         .from(".hero-visual", {
+        /* HERO IMAGE */
+        .from(".hero-visual", {
 
             opacity: 0,
 
-            x: 100,
+            x: isMobile ? 40 : 100,
 
-            scale: .92,
+            scale: isMobile ? 0.96 : 0.92,
 
-            duration: 1.4,
+            duration: isMobile ? 1 : 1.4,
 
             ease: "power4.out"
 
-        }, "-=1")
+        })
 
 
+        /* NAV */
         .from(".nav", {
 
             y: -30,
@@ -183,43 +186,47 @@ function startHero() {
         })
 
 
+        /* KICKER */
         .from(".hero-kicker", {
 
-            y: 30,
+            y: isMobile ? 20 : 30,
 
             opacity: 0,
 
-            duration: .8
+            duration: .7
 
         })
 
 
+        /* HERO HEADING */
         .from(".hero-line", {
 
             yPercent: 120,
 
             opacity: 0,
 
-            stagger: .12,
+            stagger: isMobile ? .08 : .12,
 
-            duration: 1.2,
+            duration: isMobile ? .9 : 1.2,
 
             ease: "power4.out"
 
-        }, "-=.5")
+        }, "-=.4")
 
 
+        /* DESCRIPTION */
         .from(".hero-description", {
 
-            y: 30,
+            y: 20,
 
             opacity: 0,
 
-            duration: .8
+            duration: .7
 
-        }, "-=.5")
+        }, "-=.4")
 
 
+        /* EXPLORE BUTTON */
         .from(".explore-button", {
 
             scale: 0,
@@ -230,9 +237,10 @@ function startHero() {
 
             ease: "back.out(1.7)"
 
-        }, "-=.5")
+        }, "-=.4")
 
 
+        /* SCROLL INDICATOR */
         .from(".hero-scroll", {
 
             opacity: 0,
@@ -242,6 +250,7 @@ function startHero() {
         });
 
 }
+
 
 
 /* =====================================================
@@ -309,15 +318,28 @@ gsap.utils
     });
 
 
+    
 /* =====================================================
    HERO ORB
 ===================================================== */
 
+const orbMovement =
+    window.innerWidth <= 768
+        ? {
+            x: -40,
+            y: 50
+        }
+        : {
+            x: -100,
+            y: 80
+        };
+
+
 gsap.to(".hero-orb", {
 
-    x: -100,
+    x: orbMovement.x,
 
-    y: 80,
+    y: orbMovement.y,
 
     duration: 6,
 
@@ -328,6 +350,7 @@ gsap.to(".hero-orb", {
     ease: "sine.inOut"
 
 });
+
 
 
 /* =====================================================
