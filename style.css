@@ -4499,3 +4499,1111 @@ footer {
         left: 16px;
     }
 }
+
+
+/* =========================================================
+   FINAL RESPONSIVE OVERRIDE
+   Additions for tablet + mobile
+   ========================================================= */
+
+/* ---------- GLOBAL SAFETY ---------- */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video,
+svg,
+canvas {
+    max-width: 100%;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+section,
+header,
+footer,
+main,
+article,
+div {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TABLET — 769px to 1024px
+   ========================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    .nav {
+        padding: 24px 4vw;
+    }
+
+    .nav nav {
+        gap: 20px;
+    }
+
+    .nav nav a {
+        font-size: 11px;
+    }
+
+    .section {
+        width: calc(100% - 8vw);
+        padding: 120px 0;
+    }
+
+    .section-top {
+        gap: 50px;
+    }
+
+    .section-top h2 {
+        font-size: clamp(52px, 8vw, 82px);
+        letter-spacing: -5px;
+    }
+
+    .graphic-grid,
+    .projects {
+        gap: 60px 20px;
+    }
+
+    .about-grid,
+    .extra-grid {
+        gap: 55px;
+    }
+
+    .experience-main h2 {
+        font-size: 42px;
+    }
+
+    .expertise-row {
+        grid-template-columns: 60px 1fr 1fr;
+        gap: 20px;
+    }
+
+    .expertise-row h3 {
+        font-size: 28px;
+    }
+
+    .tools-section,
+    .certification {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+
+    .tool {
+        font-size: clamp(30px, 5vw, 55px);
+        padding: 16px 22px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE — 768px and below
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .noise {
+        opacity: .025;
+    }
+
+    /* ---------- NAVIGATION ---------- */
+
+    .nav,
+    .navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 100;
+    }
+
+    .nav nav,
+    .nav-links {
+        display: none !important;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-cta,
+    .nav-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 14px;
+        font-size: 9px;
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       HERO
+       Image stays on the RIGHT, text stays on the LEFT.
+       No gradient pseudo-element = no black patch.
+       ===================================================== */
+
+    .hero {
+        position: relative;
+        width: 100%;
+        min-height: 100svh;
+        height: 100svh;
+        padding: 0 20px;
+        display: block;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        width: 58%;
+        max-width: 360px;
+        margin: 0;
+        padding: 0;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .hero-kicker {
+        max-width: 100%;
+        margin-bottom: 20px;
+        font-size: 7px;
+        line-height: 1.6;
+        letter-spacing: 1.7px;
+        white-space: nowrap;
+    }
+
+    .hero-kicker span {
+        margin: 0 4px;
+    }
+
+    .hero-title {
+        width: 100%;
+        max-width: none;
+        font-size: clamp(42px, 12.5vw, 68px);
+        line-height: .86;
+        letter-spacing: -3.5px;
+    }
+
+    .hero-line {
+        white-space: nowrap;
+        overflow: visible;
+    }
+
+    .hero-footer {
+        display: block;
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .hero-description {
+        width: 100%;
+        max-width: 220px;
+        margin: 0;
+        font-size: 9px;
+        line-height: 1.6;
+    }
+
+    .explore-button {
+        display: none !important;
+    }
+
+    /* RIGHT-SIDE PORTRAIT */
+
+    .hero-visual {
+        position: absolute;
+        width: 66vw;
+        height: 78svh;
+        max-height: 760px;
+        right: -5vw;
+        left: auto;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 3;
+        pointer-events: none;
+        opacity: 1;
+    }
+
+    .hero-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        transform: none !important;
+        filter: drop-shadow(0 20px 45px rgba(0,0,0,.75));
+    }
+
+    /* IMPORTANT:
+       Previous versions used ::before/::after gradients here.
+       Those gradients created the unwanted black patch on mobile.
+    */
+
+    .hero-visual::before,
+    .hero-visual::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .hero-image-glow {
+        width: 60%;
+        height: 60%;
+        left: 25%;
+        top: 15%;
+        filter: blur(90px);
+        opacity: .09;
+    }
+
+    .hero-orb {
+        width: 320px;
+        height: 320px;
+        right: -150px;
+        top: 25%;
+        filter: blur(110px);
+        opacity: .06;
+    }
+
+    .hero-scroll,
+    .scroll-indicator {
+        position: absolute;
+        left: 20px;
+        bottom: 18px;
+        z-index: 20;
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-scroll span {
+        width: 25px;
+    }
+
+
+    /* ---------- MARQUEE ---------- */
+
+    .marquee {
+        padding: 18px 0;
+    }
+
+    .marquee-track {
+        animation-duration: 20s;
+    }
+
+    .marquee-track span {
+        font-size: 23px;
+        margin: 0 18px;
+        -webkit-text-stroke: .7px #555;
+    }
+
+    .marquee-track i {
+        font-size: 12px;
+    }
+
+
+    /* ---------- SECTIONS ---------- */
+
+    .section {
+        width: calc(100% - 40px);
+        max-width: none;
+        padding: 85px 0;
+    }
+
+    .section-label {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .section-top {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .section-top h2 {
+        font-size: clamp(46px, 14vw, 76px);
+        line-height: .88;
+        letter-spacing: -4px;
+        margin-top: 15px;
+    }
+
+    .section-top > p {
+        width: 100%;
+        max-width: 300px;
+        margin-top: 24px;
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- GRAPHIC DESIGN ---------- */
+
+    .graphic-design {
+        width: 100%;
+    }
+
+    .graphic-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+
+    .graphic-card {
+        width: 100%;
+    }
+
+    .graphic-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+
+    .graphic-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .graphic-number {
+        top: 12px;
+        left: 12px;
+        font-size: 8px;
+    }
+
+    .graphic-view {
+        right: 12px;
+        bottom: 12px;
+        width: 58px;
+        height: 58px;
+        font-size: 7px;
+    }
+
+    .graphic-info {
+        display: block;
+        padding: 13px 0 14px;
+    }
+
+    .graphic-info h3 {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    .graphic-info span {
+        display: block;
+        margin-top: 6px;
+        font-size: 8px;
+    }
+
+    /* Touch devices should not trigger desktop hover zoom */
+
+    .graphic-card:hover .graphic-image img,
+    .project:hover .project-visual img {
+        transform: none;
+        filter: none;
+    }
+
+    .graphic-card:hover .graphic-view {
+        transform: scale(0) rotate(-20deg);
+    }
+
+
+    /* ---------- UI/UX PROJECTS ---------- */
+
+    .projects {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .project,
+    .project-wide {
+        width: 100%;
+        min-width: 0;
+        grid-column: auto !important;
+    }
+
+    .project-visual,
+    .project:not(.project-wide) .project-visual {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+
+    .project-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .project-hover {
+        display: none;
+    }
+
+    .project-meta {
+        width: 100%;
+        padding: 14px 0;
+    }
+
+    .project-meta h3 {
+        max-width: 90%;
+        font-size: 20px;
+        line-height: 1.2;
+        margin: 6px 0;
+    }
+
+    .project-meta p {
+        max-width: 250px;
+        font-size: 8px;
+        line-height: 1.5;
+    }
+
+    .project-arrow {
+        flex-shrink: 0;
+        font-size: 21px;
+    }
+
+
+    /* ---------- ABOUT ---------- */
+
+    .about-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 42px;
+        margin-top: 55px;
+    }
+
+    .about-grid h2 {
+        font-size: clamp(46px, 14vw, 78px);
+        line-height: .9;
+        letter-spacing: -4px;
+    }
+
+    .about-copy {
+        font-size: 12px;
+        line-height: 1.75;
+    }
+
+    .about-copy p {
+        margin-bottom: 23px;
+    }
+
+    .about-lead {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- EXPERIENCE ---------- */
+
+    .experience-item {
+        margin-top: 55px;
+        grid-template-columns: 35px minmax(0, 1fr);
+        gap: 15px;
+        padding: 32px 0;
+    }
+
+    .experience-year {
+        display: none;
+    }
+
+    .experience-main h2 {
+        font-size: clamp(28px, 8vw, 38px);
+        line-height: 1;
+    }
+
+    .experience-main h4 {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .experience-main p {
+        margin-top: 7px;
+        font-size: 11px;
+    }
+
+    .experience-work {
+        margin-top: 40px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .experience-work > span {
+        font-size: 8px;
+    }
+
+    .experience-tags {
+        gap: 8px;
+    }
+
+    .experience-tags span {
+        padding: 9px 13px;
+        font-size: 10px;
+    }
+
+
+    /* ---------- EXPERTISE ---------- */
+
+    .expertise-list {
+        margin-top: 55px;
+    }
+
+    .expertise-row {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 14px;
+        padding: 28px 0;
+    }
+
+    .expertise-row:hover {
+        padding-left: 0;
+    }
+
+    .expertise-row h3 {
+        font-size: clamp(22px, 7vw, 30px);
+        line-height: 1.05;
+    }
+
+    .expertise-row p {
+        grid-column: 2;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+
+    /* ---------- TOOLS ---------- */
+
+    .tools-section {
+        padding: 85px 20px;
+    }
+
+    .tools-inner {
+        width: 100%;
+    }
+
+    .tools {
+        gap: 8px;
+        margin-top: 45px;
+    }
+
+    .tool {
+        font-size: clamp(25px, 8vw, 45px);
+        line-height: 1;
+        padding: 13px 15px;
+    }
+
+
+    /* ---------- EDUCATION ---------- */
+
+    .education-list {
+        margin-top: 50px;
+    }
+
+    .education-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 25px 0;
+    }
+
+    .education-item > span {
+        font-size: 9px;
+    }
+
+    .education-item h3 {
+        font-size: 21px;
+        line-height: 1.15;
+    }
+
+    .education-item p {
+        font-size: 11px;
+        line-height: 1.5;
+        margin-top: 5px;
+    }
+
+
+    /* ---------- CERTIFICATION ---------- */
+
+    .certification {
+        padding: 85px 20px;
+    }
+
+    .certification-inner {
+        width: 100%;
+    }
+
+    .certification h2 {
+        font-size: clamp(44px, 13vw, 72px);
+        line-height: .9;
+        letter-spacing: -4px;
+        margin-top: 42px;
+    }
+
+    .certification p {
+        font-size: 11px;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+
+    /* ---------- EXTRA ---------- */
+
+    .extra-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 38px;
+        margin-top: 52px;
+    }
+
+    .extra-grid h2 {
+        font-size: clamp(46px, 14vw, 78px);
+        line-height: .9;
+        letter-spacing: -4px;
+    }
+
+    .extra-copy {
+        font-size: 12px;
+        line-height: 1.75;
+    }
+
+    .extra-copy p {
+        margin-bottom: 23px;
+    }
+
+
+    /* ---------- CONTACT ---------- */
+
+    .contact {
+        width: 100%;
+        min-height: auto;
+        padding: 90px 20px;
+    }
+
+    .contact-glow {
+        width: 320px;
+        height: 320px;
+        right: -150px;
+        bottom: -100px;
+        filter: blur(110px);
+    }
+
+    .contact-title {
+        width: 100%;
+        font-size: clamp(52px, 16vw, 95px);
+        line-height: .84;
+        letter-spacing: -5px;
+        margin-top: 50px;
+        overflow-wrap: anywhere;
+    }
+
+    .email {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(16px, 4.8vw, 25px);
+        line-height: 1.2;
+        margin-top: 45px;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 30px;
+    }
+
+    .contact-links a {
+        font-size: 10px;
+    }
+
+    .phone {
+        font-size: 10px;
+        margin-top: 20px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+        width: 100%;
+        padding: 22px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 8px;
+        line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       GALLERY MODAL
+       ===================================================== */
+
+    .gallery-container {
+        width: 100%;
+        height: 100svh;
+        padding: 18px 20px;
+        overflow: hidden;
+    }
+
+    .gallery-top {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .gallery-label {
+        font-size: 7px;
+        letter-spacing: 2px;
+    }
+
+    .gallery-top h2 {
+        max-width: 220px;
+        font-size: clamp(29px, 9vw, 46px);
+        line-height: .94;
+        letter-spacing: -2px;
+    }
+
+    .gallery-close {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        font-size: 24px;
+    }
+
+    .gallery-main {
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        gap: 7px;
+    }
+
+    .gallery-image-wrapper {
+        width: calc(100vw - 100px);
+        height: 54svh;
+        min-width: 0;
+        flex-shrink: 1;
+    }
+
+    .gallery-image-wrapper img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    .gallery-arrow {
+        width: 37px;
+        height: 37px;
+        flex-shrink: 0;
+        font-size: 13px;
+    }
+
+    .gallery-counter {
+        margin-top: 8px;
+        font-size: 8px;
+        gap: 8px;
+    }
+
+    .counter-line {
+        width: 40px;
+    }
+
+    .gallery-thumbnails {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 13px;
+        gap: 6px;
+        padding-bottom: 3px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .gallery-thumbnails::-webkit-scrollbar {
+        display: none;
+    }
+
+    .gallery-thumb {
+        width: 52px;
+        height: 40px;
+        flex: 0 0 auto;
+    }
+
+
+    /* =====================================================
+       CASE STUDY MODAL
+       ===================================================== */
+
+    .case-container {
+        width: 100%;
+        height: 100svh;
+        padding: 18px 20px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .case-header {
+        width: 100%;
+        margin-bottom: 22px;
+    }
+
+    .case-label {
+        font-size: 7px;
+        letter-spacing: 2px;
+        margin-bottom: 9px;
+    }
+
+    .case-header h2 {
+        max-width: 270px;
+        font-size: clamp(33px, 10vw, 50px);
+        line-height: .92;
+        letter-spacing: -2px;
+    }
+
+    .case-close {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        font-size: 24px;
+    }
+
+    .case-image-wrapper {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+        margin: 0;
+        overflow: visible;
+        -webkit-overflow-scrolling: auto;
+    }
+
+    .case-image-wrapper img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        object-fit: contain;
+        transform: none !important;
+    }
+
+    .case-details {
+        width: 100%;
+        max-width: none;
+        margin-top: 22px;
+        padding: 18px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 14px;
+    }
+
+    .case-details > div {
+        min-width: 0;
+    }
+
+    .case-details > div span {
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .case-details > div strong {
+        font-size: 12px;
+        line-height: 1.35;
+    }
+
+    .case-view-link {
+        grid-column: 1 / -1;
+        width: 100%;
+        padding: 12px 16px;
+        text-align: center;
+        font-size: 8px;
+    }
+
+
+    /* ---------- CURSOR ---------- */
+
+    .cursor,
+    .cursor-ring {
+        display: none !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES — 380px and below
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+
+    .nav,
+    .navbar {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero-content {
+        left: 16px;
+        width: 59%;
+    }
+
+    .hero-kicker {
+        font-size: 6.5px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-title {
+        font-size: 12vw;
+        letter-spacing: -3px;
+    }
+
+    .hero-visual {
+        width: 69vw;
+        height: 76svh;
+        right: -10vw;
+    }
+
+    .hero-description {
+        max-width: 185px;
+        font-size: 8.5px;
+    }
+
+    .hero-scroll,
+    .scroll-indicator {
+        left: 16px;
+    }
+
+    .section {
+        width: calc(100% - 32px);
+    }
+
+    .section-top h2,
+    .about-grid h2,
+    .extra-grid h2 {
+        letter-spacing: -3px;
+    }
+
+    .graphic-info h3,
+    .project-meta h3 {
+        font-size: 19px;
+    }
+
+    .experience-main h2 {
+        font-size: 29px;
+    }
+
+    .expertise-row h3 {
+        font-size: 22px;
+    }
+
+    .tools-section,
+    .certification,
+    .contact {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .contact-title {
+        font-size: 16vw;
+        letter-spacing: -4px;
+    }
+
+    .email {
+        font-size: 16px;
+    }
+
+    .gallery-container,
+    .case-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .gallery-image-wrapper {
+        width: calc(100vw - 92px);
+    }
+
+    .gallery-thumb {
+        width: 48px;
+        height: 37px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL / SHORT LANDSCAPE PHONES
+   ========================================================= */
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+
+    .hero {
+        min-height: 100svh;
+        height: auto;
+        padding-top: 85px;
+        padding-bottom: 45px;
+    }
+
+    .hero-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 55%;
+        margin: 0;
+    }
+
+    .hero-visual {
+        width: 48vw;
+        height: 100svh;
+        right: 0;
+    }
+
+    .hero-title {
+        font-size: clamp(38px, 8vw, 60px);
+    }
+
+    .hero-description {
+        max-width: 240px;
+    }
+
+    .hero-scroll {
+        display: none;
+    }
+}
