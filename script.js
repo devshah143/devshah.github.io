@@ -751,11 +751,19 @@ const galleries = {
 
         images: [
 
-            "assets/galleries/visiting-cards/01.jpg",
+            "assets/galleries/visiting-cards/1.jpg",
 
-            "assets/galleries/visiting-cards/02.jpg",
+            "assets/galleries/visiting-cards/2.jpg",
 
-            "assets/galleries/visiting-cards/03.jpg"
+            "assets/galleries/visiting-cards/3.jpg",
+
+            "assets/galleries/visiting-cards/4.jpg",
+
+            "assets/galleries/visiting-cards/5.jpg",
+
+            "assets/galleries/visiting-cards/6.jpg",
+
+            "assets/galleries/visiting-cards/7.jpg"
 
         ]
 
@@ -768,9 +776,21 @@ const galleries = {
 
         images: [
 
-            "assets/galleries/newspaper/01.jpg",
+            "assets/galleries/newspaper/1.jpg",
 
-            "assets/galleries/newspaper/02.jpg"
+            "assets/galleries/newspaper/2.jpg",
+
+            "assets/galleries/newspaper/3.jpg",
+
+            "assets/galleries/newspaper/4.jpg",
+
+            "assets/galleries/newspaper/5.jpg",
+
+            "assets/galleries/newspaper/6.jpg",
+
+            "assets/galleries/newspaper/7.jpg",
+
+            "assets/galleries/newspaper/8.jpg",
 
         ]
 
