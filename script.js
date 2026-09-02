@@ -693,7 +693,21 @@ const galleries = {
 
             "assets/galleries/menu/8.jpg",
 
-            "assets/galleries/menu/9.jpg"
+            "assets/galleries/menu/9.jpg",
+
+            "assets/galleries/menu/10.jpg",
+
+            "assets/galleries/menu/11.jpg",
+
+            "assets/galleries/menu/12.jpg",
+
+            "assets/galleries/menu/13.jpg",
+
+            "assets/galleries/menu/14.jpg",
+
+            "assets/galleries/menu/15.jpg",
+
+            "assets/galleries/menu/16.jpg",
 
         ]
 
@@ -706,11 +720,25 @@ const galleries = {
 
         images: [
 
-            "assets/galleries/pole-banners/01.jpg",
+            "assets/galleries/pole-banners/1.jpg",
 
-            "assets/galleries/pole-banners/02.jpg",
+            "assets/galleries/pole-banners/2.jpg",
 
-            "assets/galleries/pole-banners/03.jpg"
+            "assets/galleries/pole-banners/3.jpg",
+
+            "assets/galleries/pole-banners/4.jpg",
+
+            "assets/galleries/pole-banners/5.jpg",
+
+            "assets/galleries/pole-banners/6.jpg",
+
+            "assets/galleries/pole-banners/7.jpg",
+
+            "assets/galleries/pole-banners/8.jpg",
+
+            "assets/galleries/pole-banners/9.jpg",
+
+            "assets/galleries/pole-banners/10.jpg"
 
         ]
 
