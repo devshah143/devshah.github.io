@@ -677,11 +677,23 @@ const galleries = {
 
         images: [
 
-            "assets/galleries/menu/01.jpg",
+            "assets/galleries/menu/1.jpg",
 
-            "assets/galleries/menu/02.jpg",
+            "assets/galleries/menu/2.jpg",
 
-            "assets/galleries/menu/03.jpg"
+            "assets/galleries/menu/3.jpg",
+            
+            "assets/galleries/menu/4.jpg",
+
+            "assets/galleries/menu/5.jpg",
+
+            "assets/galleries/menu/6.jpg",
+
+            "assets/galleries/menu/7.jpg",
+
+            "assets/galleries/menu/8.jpg",
+
+            "assets/galleries/menu/9.jpg"
 
         ]
 
